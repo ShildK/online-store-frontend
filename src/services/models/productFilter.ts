@@ -1,6 +1,6 @@
 import { OrderType } from "../enum/orderType";
 
-export interface ProductFilter {
+export class ProductFilter {
     priceFrom?: number;
     priceTo?: number;
     categoryId?: number;

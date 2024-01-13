@@ -3,7 +3,7 @@ import { FC } from "react";
 import { TSetState } from "../../types/others";
 
 import ProductCard from "../ProductCard/ProductCard";
-import { products } from "../../types/products";
+import { products } from "../../services/mock/products";
 
 interface TProps {
    title: string;
@@ -24,10 +24,7 @@ const ProductListWithTitle: FC<TProps> = (props) => {
                   return (
                      <ProductCard
                         key={product.id}
-                        image={product.image}
-                        name={product.name}
-                        price={product.price}
-                        id={product.id}
+                        product={product}
                      />
                   );
                }

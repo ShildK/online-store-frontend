@@ -3,6 +3,7 @@ import "./Authorization.css";
 import Container from "../../Container/Container";
 import InputBlock from "../Registration/InputBlock/InputBlock";
 import { Link } from "react-router-dom";
+import { AuthenticationService } from "../../../services/authenticationService";
 
 const Authorization: React.FC = () => {
    const userRef = useRef<HTMLInputElement | null>(null);
@@ -23,12 +24,16 @@ const Authorization: React.FC = () => {
 
    const handlerSubmit = async (e: React.ChangeEvent<any>) => {
       e.preventDefault();
-      console.log(email, password);
+      let user = new AuthenticationService().authorize(email, password)
+      console.log(user);
+      
       setEmail("");
       setPassword("");
 
       setSuccess(true);
    };
+
+   
 
    return (
       <Container>

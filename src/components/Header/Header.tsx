@@ -4,9 +4,16 @@ import "./Header.css";
 import { IoMenu, IoCart, IoSearchSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import ModalCategory from "../ModalCategory/ModalCategory";
+import { AuthenticationService } from "../../services/authenticationService";
 
 const Header: React.FC = () => {
    const [isHovered, setHovered] = useState<boolean>(false);
+   const aythenticationService = new AuthenticationService()
+
+   const user = aythenticationService.getUser();
+   let isAuthorized = user !== null;
+
+   const logout = aythenticationService.logout()
 
    return (
       <div className="header">
@@ -40,9 +47,16 @@ const Header: React.FC = () => {
 
             <button className="address">Укажите адрес доставки</button>
             <div className="buttons">
-               <Link className="log_in" to="/authorization">
-                  Войти
-               </Link>
+               {isAuthorized ? (
+                  <button className="log_in" onClick={() => logout}>
+                     Выйти
+                  </button>
+               ) : (
+                  <Link className="log_in" to="/authorization">
+                     Войти
+                  </Link>
+               )}
+
                <Link className="basket_btn" to="/cart">
                   <IoCart />
                </Link>

@@ -3,17 +3,13 @@ import { Link, useParams } from "react-router-dom";
 import {IoCartOutline} from "react-icons/io5"
 
 import "./SingleProduct.css";
-import { products } from "../../../types/products";
+import { products } from "../../../services/mock/products";
 import ProductListWithTitle from "../../ProductListWithTitle/ProductListWithTitle";
 
-interface TProps {
-
-}
 
 const SingleProduct: React.FC = () => {
    const { productId } = useParams();
    
-
    return (
       <section className="product-item">
         {products.map((product) => {

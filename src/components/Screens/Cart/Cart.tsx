@@ -2,13 +2,7 @@ import React from "react";
 import "./Cart.css";
 import { PiControlLight } from "react-icons/pi";
 import CartItem from "./CartItem/CartItem";
-import { products } from "../../../types/products";
-
-// interface TProps {
-//    productCount: number;
-//    deliveryCost: number;
-//    productsCost: number;
-// }
+import { products } from "../../../services/mock/products";
 
 const Cart: React.FC = () => {
    const productCount = 3;
