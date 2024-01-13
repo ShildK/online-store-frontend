@@ -1,0 +1,75 @@
+.modal {
+   width: 930px;
+   height: 460px;
+   display: none;
+   position: absolute;
+   top: 100%;
+   left: 0;
+   background-color: #fff;
+   padding: 10px;
+   border: 1px solid #ccc;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   transition: opacity 0.3s ease-in-out;
+}
+
+.modal.visible {
+   display: block;
+   opacity: 1;
+   /* margin-top: 15px; */
+}
+
+.categories__names {
+    width: 290px;
+    /* height: 100%; */
+    border-right: 1px solid rgb(190, 190, 190);
+}
+.categories__list {
+}
+.category {
+   display: flex;
+   align-items: center;
+   margin: 20px 5px;
+}
+.category svg {
+   margin-right: 15px;
+   border-radius: 10px;
+}
+.milk svg {
+    background-color: rgba(41, 194, 148, 0.301);
+}
+.sausage svg {
+    background-color: rgba(32, 30, 173, 0.192);
+    
+}
+.meat svg {background-color: rgba(216, 54, 62, 0.267);
+}
+.cereal svg {
+    background-color: rgba(62, 180, 33, 0.301);
+}
+.fish svg {
+    background-color: rgba(40, 188, 214, 0.301);
+}
+.candy svg {
+    background-color: rgba(255, 115, 0, 0.301);
+}
+.fruts svg {
+   background-color: rgba(255, 166, 0, 0.301);
+}
+.beauty svg{
+    background-color: rgba(163, 25, 128, 0.301);
+}
+.categories__link{
+    color: #333333;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+}
+.categories__link:hover{
+    color: #53c95a;
+    transition: 0.1s;
+}
+.subcategories__names {
+}
+.subcategorues__list {
+}
+.subcategory {
+}

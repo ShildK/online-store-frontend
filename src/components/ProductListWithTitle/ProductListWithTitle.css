@@ -1,0 +1,13 @@
+.products-list{
+    width: 70%;
+    margin: 50px 0 0 0;
+}
+.products-list__title{
+
+}
+.products-list__cards{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 30px auto;
+}
