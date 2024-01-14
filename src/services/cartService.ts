@@ -1,8 +1,8 @@
 import { Product } from "../types/product";
 import { AuthenticationService } from "./authenticationService";
 import axios from "axios";
-import { BASE_URL } from "../api/axios";
 import { ShoppingCartItem } from "../types/shoppingCartItem";
+import { BACKEND_URL } from "../components/App/App";
 
 export class CartService {
    lsKey: string = "shoppingCartItem";
@@ -33,7 +33,7 @@ export class CartService {
          return shoppingCartItemsInLS;
       }
 
-      let response = await axios.get(BASE_URL + "/getUserShoppingCartItems", {
+      let response = await axios.get(BACKEND_URL + "/getUserShoppingCartItems", {
          headers: { Authorization: `Bearer ${isAuthenticated.token}` },
       });
 
@@ -81,7 +81,7 @@ export class CartService {
         let json = JSON.stringify(shoppingCartItems);
 
          let result = await axios.post(
-            BASE_URL + "/setUserShoppingCartItems",
+            BACKEND_URL + "/setUserShoppingCartItems",
             json,
             { headers: { "Authorization": `Bearer ${isAuthenticated.token}`, "Content-Type": "application/json" } }
          );

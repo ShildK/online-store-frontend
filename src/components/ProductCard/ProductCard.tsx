@@ -4,6 +4,7 @@ import { IoCart } from "react-icons/io5";
 import { Product } from "../../types/product";
 import { TProduct } from "../../types/others";
 import { CartService } from "../../services/cartService";
+import { FRONTEND_URL } from "../App/App";
 
 interface TProps {
    product: TProduct;
@@ -12,9 +13,9 @@ interface TProps {
 const ProductCard: React.FC<TProps> = ({ product }) => {
    const [showMessage, setShowMessage] = useState<boolean>(false);
 
-   const hendler = () => {
+   const handler = () => {
       window.location.assign(
-         `http://localhost:3000/products/item/${product.id}`
+         FRONTEND_URL + `/products/item/${product.id}`
       );
    };
 
@@ -29,7 +30,7 @@ const ProductCard: React.FC<TProps> = ({ product }) => {
 
    return (
       <div className="product">
-         <div className="product__handler" onClick={hendler}>
+         <div className="product__handler" onClick={handler}>
             <img className="product_image" src={product.image} alt="" />
             <h3 className="product_name">{product.name}</h3>
          </div>

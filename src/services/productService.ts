@@ -3,13 +3,14 @@ import { Category } from "../types/category";
 import { FilterResponse } from "./models/filterResponse";
 import { ProductFilter } from "./models/productFilter";
 import { ProductResponse } from "./models/productResponse";
-import axios, { BASE_URL } from "../api/axios";
 import { debug, log } from "console";
+import axios from "axios";
+import { BACKEND_URL } from "../components/App/App";
 
 export class ProductService {
    async getProducts(filter: ProductFilter): Promise<ProductResponse> {
       try {
-         const response = await axios.get(BASE_URL + "/products", {
+         const response = await axios.get(BACKEND_URL + "/products", {
             params: filter,
          });
          let products: ProductResponse = JSON.parse(
@@ -30,7 +31,7 @@ export class ProductService {
    }
 
    async getProductById(productId: number) : Promise<Product>{
-      const response = await axios.get(BASE_URL + "/getProductById", {
+      const response = await axios.get(BACKEND_URL + "/getProductById", {
          params: {
             productId: productId
          },
@@ -43,7 +44,7 @@ export class ProductService {
 
    async getFilter(categoryId: number | undefined): Promise<FilterResponse> {
       try {
-         const response = await axios.get(BASE_URL + "/filter", {params: {categoryId: categoryId}});
+         const response = await axios.get(BACKEND_URL + "/filter", {params: {categoryId: categoryId}});
          let filter: FilterResponse = JSON.parse(JSON.stringify(response.data));
          return filter;
       } catch (error) {
@@ -58,7 +59,7 @@ export class ProductService {
 
    async getCategories(): Promise<Category[]> {
       try {
-         const response = await axios.get(BASE_URL + "/category");
+         const response = await axios.get(BACKEND_URL + "/category");
          let categories: Category[] = JSON.parse(JSON.stringify(response.data));
          return categories;
       } catch (error) {

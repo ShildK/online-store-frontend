@@ -17,10 +17,17 @@ const CartItem: React.FC<TProps> = ({ productId, productImage, productName, prod
 
    const appendProduct = async (productId: number) => {
       await cartService.appendProduct(productId);
+      window.location.reload(); // TODO: сделать по человечески
    }
 
-   const reductProduct = async (productId: number) => {
+   const reduceProduct = async (productId: number) => {
       await cartService.reduceProduct(productId);
+      window.location.reload(); // TODO: сделать по человечески
+   }
+
+   const removeProduct = async (productId: number) => {
+      await cartService.removeProduct(productId);
+      window.location.reload(); // TODO: сделать по человечески
    }
 
    return (
@@ -32,13 +39,13 @@ const CartItem: React.FC<TProps> = ({ productId, productImage, productName, prod
             <div className="cart-item__label">
                <a href="">{productName}</a>
             </div>
-            <button className="cart-item__remove">
+            <button onClick={() => removeProduct(productId)} className="cart-item__remove">
                <IoClose />
             </button>
             <div className="cart-item__quantity">
                <div>
                   <div className="quantity-control">
-                     <button onClick={() => reductProduct(productId)} className="quantity-control__minus">
+                     <button onClick={() => reduceProduct(productId)} className="quantity-control__minus">
                         {productCount < 2 ? <IoTrashOutline /> : <FiMinus/>}
                         
                      </button>

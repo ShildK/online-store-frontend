@@ -11,10 +11,11 @@ const Cart: React.FC = () => {
    const [productsCost, setProductsCost] = useState<number | null>()
    const [deliveryCost, setDeliveryCost] = useState<number | null>()
 
+   const cartService =  new CartService();
 
    useEffect(() => {
       (async()=> {
-         const shoppingCartItems: ShoppingCartItem[] = await new CartService().getShoppingCartItems();
+         const shoppingCartItems: ShoppingCartItem[] = await cartService.getShoppingCartItems();
          setShoppingCart(shoppingCartItems)
 
          if(shoppingCartItems.length > 0){
@@ -22,12 +23,16 @@ const Cart: React.FC = () => {
             setProductsCost(_productsCost);
             const _deliveryCost = _productsCost / 20
             setDeliveryCost(_deliveryCost)
-
             setTotalAmount(_deliveryCost + _productsCost)
          }
       })()
    },[])
 
+
+   const clearShoppingCart = async() => {
+      await cartService.setShoppingCartItems([]);
+      setShoppingCart([]);
+   }
 
 
    return (
@@ -38,7 +43,7 @@ const Cart: React.FC = () => {
                   <p className="cart__title">
                      Корзина: <span>{shoppingCart.length}</span> позиций
                   </p>
-                  <button className="cart__clear-all">Очистить корзину</button>
+                  <button onClick={() =>clearShoppingCart()} className="cart__clear-all">Очистить корзину</button>
                </div>
                <p className="cart__subtitle">Товары</p>
                <div>

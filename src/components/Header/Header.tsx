@@ -2,18 +2,23 @@ import React, { useState } from "react";
 import "./Header.css";
 
 import { IoMenu, IoCart, IoSearchSharp } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import ModalCategory from "../ModalCategory/ModalCategory";
 import { AuthenticationService } from "../../services/authenticationService";
+import { FRONTEND_URL } from "../App/App";
+import { URLSearchParams } from "url";
 
 const Header: React.FC = () => {
    const [isHovered, setHovered] = useState<boolean>(false);
-   const aythenticationService = new AuthenticationService()
+   const [searchText, setSearchText] = useState<string>("");
+   const aythenticationService = new AuthenticationService();
 
    const user = aythenticationService.getUser();
    let isAuthorized = user !== null;
 
-   // const logout = aythenticationService.logout()
+   const searchByText = async (searchText: string) => {
+      window.location.assign(FRONTEND_URL + `/products?searchText=` + searchText);
+   };
 
    return (
       <div className="header">
@@ -39,10 +44,14 @@ const Header: React.FC = () => {
                   <IoSearchSharp />
                   <input
                      type="text"
+                     onChange={(e) => setSearchText(e.target.value)}
                      className="search_product"
                      placeholder="Начните вводить название товара"
                   />
                </div>
+               <button onClick={() => searchByText(searchText)}>
+                  ИСКАТЬ
+               </button>
             </div>
 
             <button className="address">Укажите адрес доставки</button>

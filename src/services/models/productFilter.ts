@@ -6,4 +6,5 @@ export class ProductFilter {
     orderBy: string;
     limit: number; // лимит элементов на странице
     pageNumber: number;
+    text?: string;
 }

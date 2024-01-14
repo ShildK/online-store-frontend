@@ -1,23 +1,13 @@
 import axios, { AxiosResponse } from "axios";
 import { User } from "../types/user";
 import { RegisterRequest } from "./models/registerRequest";
-import { BASE_URL } from "../api/axios";
+import { BACKEND_URL } from "../components/App/App";
 
 export class AuthenticationService {
    async register(userData: RegisterRequest): Promise<Boolean> {
     try {
-        // const response: AxiosResponse<User> = await axios.post('/login', {mail: mail, password: password});
-        
-        // const { name, token } = response.data;
-
-        // console.log('Login successful!');
-        // console.log('JWT Token:', token);
-        // Store the token in a secure way (e.g., localStorage or session storage)
-    
-        // return user;
-
         const response = await axios.post(
-            BASE_URL + "/register",
+            BACKEND_URL + "/register",
             JSON.stringify(userData),
             {
                headers: { "Content-Type": "application/json" },
@@ -37,7 +27,7 @@ export class AuthenticationService {
         this.logout();
 
         const response = await axios.post(
-            BASE_URL + "/login",
+            BACKEND_URL + "/login",
             JSON.stringify({ mail: mail, password: password }),
             {
                headers: { "Content-Type": "application/json" },

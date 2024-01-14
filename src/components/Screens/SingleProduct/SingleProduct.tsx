@@ -6,8 +6,6 @@ import "./SingleProduct.css";
 import ProductListWithTitle from "../../ProductListWithTitle/ProductListWithTitle";
 import { CartService } from "../../../services/cartService";
 import { Product } from "../../../types/product";
-import { ProductFilter } from "../../../services/models/productFilter";
-import { ProductResponse } from "../../../services/models/productResponse";
 import { ProductService } from "../../../services/productService";
 
 const SingleProduct: React.FC = () => {

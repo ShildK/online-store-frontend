@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import "./Products.css";
 
 import ProductCard from "../../ProductCard/ProductCard";
@@ -45,6 +45,11 @@ const Products: React.FC = () => {
       let productFilter = new ProductFilter();
       productFilter.categoryId = _categoryId;
 
+      const queryParameters = new URLSearchParams(window.location.search)
+      const searchText = queryParameters.get("searchText")
+      if(searchText != null && searchText != ""){
+         productFilter.text = searchText;
+      }
       if (priceMin != undefined) {
          productFilter.priceFrom = priceMin;
       }
