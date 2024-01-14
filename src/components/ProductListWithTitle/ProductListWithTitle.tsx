@@ -3,30 +3,24 @@ import { FC } from "react";
 import { TSetState } from "../../types/others";
 
 import ProductCard from "../ProductCard/ProductCard";
+import { Product } from "../../types/product";
 
 interface TProps {
    title: string;
+   products: Product[];
 }
 
-const ProductListWithTitle: FC<TProps> = (props) => {
+const ProductListWithTitle: FC<TProps> = ({ title, products }) => {
+   console.log(products);
 
-
-   const { title } = props;
    return (
       <div className="products-list">
          <h2 className="products-list__title">{title}</h2>
-         {/* <div className="products-list__cards">
+         <div className="products-list__cards">
             {products.map((product) => {
-               if (product.id <= 5) {
-                  return (
-                     <ProductCard
-                        key={product.id}
-                        product={product}
-                     />
-                  );
-               }
+               return <ProductCard key={product.id} product={product} />;
             })}
-         </div> */}
+         </div>
       </div>
    );
 };

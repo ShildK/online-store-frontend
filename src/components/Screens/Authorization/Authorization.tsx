@@ -4,6 +4,7 @@ import Container from "../../Container/Container";
 import InputBlock from "../Registration/InputBlock/InputBlock";
 import { Link } from "react-router-dom";
 import { AuthenticationService } from "../../../services/authenticationService";
+import { FRONTEND_URL } from "../../App/App";
 
 const Authorization: React.FC = () => {
    const userRef = useRef<HTMLInputElement | null>(null);
@@ -24,25 +25,28 @@ const Authorization: React.FC = () => {
 
    const handlerSubmit = async (e: React.ChangeEvent<any>) => {
       e.preventDefault();
-      let user = await new AuthenticationService().login(email, password)
-      if(user != null){
+      let user = await new AuthenticationService().login(email, password);
+      if (user != null) {
          setEmail("");
          setPassword("");
          setSuccess(true);
       }
    };
-
-   
-
+   const login = () => {
+      window.location.reload();
+      window.location.assign(FRONTEND_URL + `/home`);
+   };
    return (
       <Container>
          {success ? (
             <section>
                <div className="success-message">
-                  <h2 className="authorization__title">Вы авторизованы</h2>
-                  <Link className="link" to="/home">
-                     Перейти на главную страницу
-                  </Link>
+                  <div onClick={login}>
+                     <h2 className="authorization__title">Вы авторизованы</h2>
+                     <Link className="link" to="/home">
+                        Перейти на главную страницу
+                     </Link>
+                  </div>
                </div>
             </section>
          ) : (

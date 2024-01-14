@@ -2,11 +2,10 @@
    width: 100%;
    height: 100%;
 }
-.home__carusel {
+.home__carusel img{
    width: 1110px;
-   height: 355px;
-   background-color: rgb(255, 255, 184);
-   margin: 50px auto 50px;
+   height: 555px;
+   margin: 0 auto 50px;
 }
 .home__navigation {
    width: 1110px;

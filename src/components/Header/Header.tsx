@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Header.css";
 
 import { IoMenu, IoCart, IoSearchSharp } from "react-icons/io5";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ModalCategory from "../ModalCategory/ModalCategory";
 import { AuthenticationService } from "../../services/authenticationService";
 import { FRONTEND_URL } from "../App/App";
-import { URLSearchParams } from "url";
 
 const Header: React.FC = () => {
    const [isHovered, setHovered] = useState<boolean>(false);
@@ -17,7 +16,15 @@ const Header: React.FC = () => {
    let isAuthorized = user !== null;
 
    const searchByText = async (searchText: string) => {
-      window.location.assign(FRONTEND_URL + `/products?searchText=` + searchText);
+      window.location.assign(
+         FRONTEND_URL + `/products?searchText=` + searchText
+      );
+   };
+
+
+   const logout = () => {
+      new AuthenticationService().logout();
+      window.location.reload();
    };
 
    return (
@@ -49,7 +56,10 @@ const Header: React.FC = () => {
                      placeholder="Начните вводить название товара"
                   />
                </div>
-               <button onClick={() => searchByText(searchText)}>
+               <button
+                  className="search-input"
+                  onClick={() => searchByText(searchText)}
+               >
                   ИСКАТЬ
                </button>
             </div>
@@ -57,7 +67,7 @@ const Header: React.FC = () => {
             <button className="address">Укажите адрес доставки</button>
             <div className="buttons">
                {isAuthorized ? (
-                  <button className="log_in" onClick={() => {}}>
+                  <button className="log_in" onClick={logout}>
                      Выйти
                   </button>
                ) : (

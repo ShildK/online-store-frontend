@@ -107,7 +107,14 @@
    width: 25px;
    height: 25px;
 }
-
+.search-input{
+   background-color: #53c95a;
+   padding: 4px 15px;
+   margin:0 90px 0 -100px;
+   color: #ffffff;
+   border: none;
+   border-radius: 12px;
+}
 
 
 

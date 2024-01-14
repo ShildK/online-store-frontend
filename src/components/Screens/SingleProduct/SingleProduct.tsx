@@ -12,6 +12,11 @@ const SingleProduct: React.FC = () => {
    const { productId } = useParams();
    const [product, setProduct] = useState<Product>();
    const [showMessage, setShowMessage] = useState<boolean>(false);
+   const [hits, setHits] = useState<Product[]>([])
+
+   const productService = new ProductService();
+
+   
 
    useEffect(() => {
       (async () => {
@@ -20,6 +25,18 @@ const SingleProduct: React.FC = () => {
          );
          console.log(product);
          setProduct(product);
+
+         const _hits = await productService.getProducts({
+            priceFrom: 2000,
+            priceTo: undefined,
+            categoryId: undefined,
+            brand: undefined,
+            orderBy: "PriceDESC",
+            limit: 5,
+            pageNumber: 1,
+            text: undefined,
+         });
+         setHits(_hits.products)
       })();
    }, []);
 
@@ -70,7 +87,7 @@ const SingleProduct: React.FC = () => {
          )}
 
          <Link to="/products">Back to products</Link>
-         <ProductListWithTitle title="Рекомендуемые товары" />
+         <ProductListWithTitle title="Рекомендуемые товары" products={hits} />
       </section>
    );
 };
