@@ -1,7 +1,6 @@
 import { Product } from "./product";
 
-export class CartProduct {
-    id?: number;
+export class ShoppingCartItem {
     product: Product;
     count: number;
 }

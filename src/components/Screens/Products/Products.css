@@ -16,7 +16,7 @@
    margin-top: 30px;
 }
 .products__filter{
-   width: 330px;
+   width: 240px;
    margin-right: 40px;
    border-right: 1px solid rgb(187, 187, 187);
 }
@@ -34,6 +34,7 @@
    margin-right: 10px;
 }
 .filter-input input{
+   width: 60%;
    padding: 10px 12px;
    background-color: #e6e6e6;
    border-radius: 9px;

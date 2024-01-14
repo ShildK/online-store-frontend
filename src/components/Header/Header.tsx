@@ -13,7 +13,7 @@ const Header: React.FC = () => {
    const user = aythenticationService.getUser();
    let isAuthorized = user !== null;
 
-   const logout = aythenticationService.logout()
+   // const logout = aythenticationService.logout()
 
    return (
       <div className="header">
@@ -48,7 +48,7 @@ const Header: React.FC = () => {
             <button className="address">Укажите адрес доставки</button>
             <div className="buttons">
                {isAuthorized ? (
-                  <button className="log_in" onClick={() => logout}>
+                  <button className="log_in" onClick={() => {}}>
                      Выйти
                   </button>
                ) : (

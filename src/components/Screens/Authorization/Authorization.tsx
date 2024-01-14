@@ -24,13 +24,12 @@ const Authorization: React.FC = () => {
 
    const handlerSubmit = async (e: React.ChangeEvent<any>) => {
       e.preventDefault();
-      let user = new AuthenticationService().authorize(email, password)
-      console.log(user);
-      
-      setEmail("");
-      setPassword("");
-
-      setSuccess(true);
+      let user = await new AuthenticationService().login(email, password)
+      if(user != null){
+         setEmail("");
+         setPassword("");
+         setSuccess(true);
+      }
    };
 
    

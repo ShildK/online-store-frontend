@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ModalCategory.css";
 
 import { Link } from "react-router-dom";
 import { ProductService } from "../../services/productService";
+import { Category } from "../../types/category";
 
 interface TProps {
    isHovered: boolean;
@@ -10,7 +11,16 @@ interface TProps {
 
 const ModalCategory: React.FC<TProps> = ({ isHovered }) => {
    const [hoveredId, setHoveredId] = useState<number>(0);
-   const categories = new ProductService().getCategories();
+   const [categories, setCategories] = useState<Category[]>([])
+   
+   useEffect(() => {
+      (async()=> {
+         const categories = await new ProductService().getCategories();
+         setCategories(categories)
+      })()
+   },[]);
+
+   
    console.log(categories);
 
    const handleMouseEnter = (id: number) => {

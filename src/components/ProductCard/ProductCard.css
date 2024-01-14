@@ -1,11 +1,11 @@
 .product {
-   width: 179px;
+   width: 202px;
    height: 366px;
    margin: 5px;
 }
 .product_image {
-   width: 179px;
-   height: 179px;
+   width: 202px;
+   height: 202px;
    border-radius: 24px;
 }
 .product_name {
@@ -18,9 +18,13 @@
     font-size: 14px;
     color: #BDBDBD;
 }
+.product__handler{
+   height: 280px;
+}
 .product_buy {
    display: flex;
    justify-content: space-between;
+   align-items: center;
 }
 .product_price {
     font-size: 16px;

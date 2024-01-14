@@ -12,6 +12,8 @@ import "./Registration.css";
 import axios from "../../../api/axios";
 import Container from "../../Container/Container";
 import InputBlock from "./InputBlock/InputBlock";
+import { AuthenticationService } from "../../../services/authenticationService";
+import { RegisterRequest } from "../../../services/models/registerRequest";
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{2,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{6,24}$/;
@@ -88,22 +90,33 @@ const Registration: React.FC = (props) => {
          return;
       }
       try {
-         const response = await axios.post(
-            REGISTER_URL,
-            JSON.stringify({ userName, email, password }),
-            {
-               headers: { "Content-Type": "application/json" },
-               withCredentials: true,
-            }
-         );
-         console.log(response.data);
+         const registerRequest = new RegisterRequest();
+         registerRequest.mail = email
+         registerRequest.name = userName
+         registerRequest.password = password
+         const register = await new AuthenticationService().register(registerRequest)
+         if(register == true){
+            setSuccess(true);
+            setUserName("");
+            setEmail("");
+            setPassword("");
+            setMatchPassword("");
+         }
+         else {
+            setErrorMessage("Ошибка регистрации")
+         }
+         // const response = await axios.post(
+         //    REGISTER_URL,
+         //    JSON.stringify({ userName, email, password }),
+         //    {
+         //       headers: { "Content-Type": "application/json" },
+         //       withCredentials: true,
+         //    }
+         // );
+         // console.log(response.data);
          //  console.log(response.accessToken);
-         console.log(JSON.stringify(response));
-         setSuccess(true);
-         setUserName("");
-         setEmail("");
-         setPassword("");
-         setMatchPassword("");
+         // console.log(JSON.stringify(response));
+
       } catch (err) {
          // if(!err?.response){
          //   setErrorMessage("Нет ответа от сервера")
@@ -123,7 +136,7 @@ const Registration: React.FC = (props) => {
          {success ? (
             <section>
                <div className="success-message">
-                  <h2 className="registration__title">Вы зарегестрированны</h2>
+                  <h2 className="registration__title">Вы зарегистрированны</h2>
                   <Link className="link" to="/authorization">
                      Ввойти
                   </Link>
