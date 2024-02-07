@@ -51,7 +51,8 @@ const Header: React.FC = () => {
                      onMouseLeave={() => setHovered(false)}
                   >
                      <IoMenu />
-                     <ModalCategory isHovered={isHovered} />
+                     
+                  <ModalCategory isHovered={isHovered} />
                   </div>
                   <div className="header__input-search">
                      <IoSearchSharp />

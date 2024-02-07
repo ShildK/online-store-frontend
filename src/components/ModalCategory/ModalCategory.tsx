@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { IoSearchSharp } from "react-icons/io5";
+import { IoSearchSharp, IoClose } from "react-icons/io5";
 import "./ModalCategory.css";
 
 import { Link } from "react-router-dom";
@@ -14,6 +14,8 @@ interface TProps {
 const ModalCategory: React.FC<TProps> = ({ isHovered }) => {
    const [hoveredId, setHoveredId] = useState<number>(0);
    const [categories, setCategories] = useState<Category[]>([]);
+   const [subCategories, setSubCategories] = useState<Category[]>([]);
+   const [showSubCategories, setShowSubCategories] = useState<boolean>(false);
 
    const [searchText, setSearchText] = useState<string>("");
 
@@ -23,6 +25,10 @@ const ModalCategory: React.FC<TProps> = ({ isHovered }) => {
          setCategories(categories);
       })();
    }, []);
+
+   useEffect(() => {
+      console.log(hoveredId);
+   }, [hoveredId]);
 
    console.log(categories);
 
@@ -37,38 +43,87 @@ const ModalCategory: React.FC<TProps> = ({ isHovered }) => {
       );
    };
 
+   const handleCategoryClick = (categoryId: number) => {
+      // const subCategories = categories.filter(
+      //    (subCategory) => subCategory.parentId === hoveredId
+      // );
+      // setSubCategories(subCategories);
+      console.log(categoryId);
+
+      setShowSubCategories(true);
+   };
+
+   const renderCategories = (parentId = 0) => {
+      return categories
+         .filter((category) => category.parentId === parentId)
+         .map((category) => (
+            <li
+               className="category"
+               key={category.id}
+               onMouseEnter={() => handleMouseEnter(category.id)}
+               onMouseLeave={() => setHoveredId(0)}
+               onClick={() => handleCategoryClick(hoveredId)}
+            >
+               <div className="category__parent">
+                  {category.parentId === 0 && (
+                     <div>
+                        <img src={category.icon} alt="" />
+                     </div>
+                  )}
+
+                  <Link
+                     className="categories__link"
+                     to={`/products/${category.id}`}
+                  >
+                     {category.name}
+                  </Link>
+               </div>
+
+               <ul>
+                  {hoveredId === category.id && renderCategories(category.id)}
+               </ul>
+            </li>
+         ));
+   };
+
    return (
       <div className={`modal ${isHovered ? "visible" : ""}`}>
-         <div className="categories">
-            <div className="categories__search-product">
-               <div className="header__input-search">
-                  <IoSearchSharp />
-                  <input
-                     type="text"
-                     className="input-search"
-                     onChange={(e) => setSearchText(e.target.value)}
-                     placeholder="Название товара"
-                  />
-               </div>
-               <button
-                  className="header__button-search"
-                  onClick={() => searchByText(searchText)}
-               >
-                  ИСКАТЬ
-               </button>
+         <div className="modal__close">
+            <button className="modal__close-btn">
+               <IoClose />
+            </button>
+         </div>
+         <div className="modal__search-product">
+            <div className="modal__input-search">
+               <IoSearchSharp />
+               <input
+                  type="text"
+                  className="input-search"
+                  onChange={(e) => setSearchText(e.target.value)}
+                  placeholder="Название товара"
+               />
             </div>
+            <button
+               className="modal__button-search"
+               onClick={() => searchByText(searchText)}
+            >
+               ИСКАТЬ
+            </button>
+         </div>
+         <div className="categories">
             <div className="categories__names">
+               <div className="modal__phone">{renderCategories()}</div>
                <ul className="categories__list">
                   {categories.map((category) => {
-                     if (category.parentId === undefined) {
+                     if (category.parentId === 0) {
                         return (
                            <li
                               className="category"
                               key={category.id}
                               onMouseEnter={() => handleMouseEnter(category.id)}
-                              //    onMouseLeave={() => setHoveredId(null)}
+                              onMouseLeave={() => setHoveredId(0)}
                            >
-                              <div>
+                              <div className="category__image">
                                  <img src={category.icon} alt="" />
                               </div>
                               <Link
@@ -81,6 +136,7 @@ const ModalCategory: React.FC<TProps> = ({ isHovered }) => {
                         );
                      }
                   })}
+
                   {/* <li className="category">
                   <div className="fruts">
                      <LuApple />
@@ -148,11 +204,14 @@ const ModalCategory: React.FC<TProps> = ({ isHovered }) => {
                </ul>
             </div>
             <div className="subcategories__names">
-               <ul className="subcategorues__list">
+               <ul className="subcategories__list">
                   {categories.map((category) => {
-                     if (hoveredId == category.parentId) {
+                     if (hoveredId == category.parentId && hoveredId !== 0) {
                         return (
-                           <Link to={`/products/${category.id}`}>
+                           <Link
+                              to={`/products/${category.id}`}
+                              key={category.id}
+                           >
                               <li className="subcategory" key={category.id}>
                                  <img src={category.icon} alt="" />
                                  <p>{category.name}</p>
