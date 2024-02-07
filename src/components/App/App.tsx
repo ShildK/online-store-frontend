@@ -1,4 +1,4 @@
-import "./index.css";
+import "./App.css";
 import React from 'react'
 // import { useEffect, useState, useRef } from "react";
 import AppRoutes from "../Routes/Routes";

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { IoSearchSharp } from "react-icons/io5";
 import "./ModalCategory.css";
 
 import { Link } from "react-router-dom";
 import { ProductService } from "../../services/productService";
 import { Category } from "../../types/category";
+import { FRONTEND_URL } from "../App/App";
 
 interface TProps {
    isHovered: boolean;
@@ -11,16 +13,17 @@ interface TProps {
 
 const ModalCategory: React.FC<TProps> = ({ isHovered }) => {
    const [hoveredId, setHoveredId] = useState<number>(0);
-   const [categories, setCategories] = useState<Category[]>([])
-   
-   useEffect(() => {
-      (async()=> {
-         const categories = await new ProductService().getCategories();
-         setCategories(categories)
-      })()
-   },[]);
+   const [categories, setCategories] = useState<Category[]>([]);
 
-   
+   const [searchText, setSearchText] = useState<string>("");
+
+   useEffect(() => {
+      (async () => {
+         const categories = await new ProductService().getCategories();
+         setCategories(categories);
+      })();
+   }, []);
+
    console.log(categories);
 
    const handleMouseEnter = (id: number) => {
@@ -28,9 +31,32 @@ const ModalCategory: React.FC<TProps> = ({ isHovered }) => {
       console.log(id);
    };
 
+   const searchByText = async (searchText: string) => {
+      window.location.assign(
+         FRONTEND_URL + `/products?searchText=` + searchText
+      );
+   };
+
    return (
       <div className={`modal ${isHovered ? "visible" : ""}`}>
          <div className="categories">
+            <div className="categories__search-product">
+               <div className="header__input-search">
+                  <IoSearchSharp />
+                  <input
+                     type="text"
+                     className="input-search"
+                     onChange={(e) => setSearchText(e.target.value)}
+                     placeholder="Название товара"
+                  />
+               </div>
+               <button
+                  className="header__button-search"
+                  onClick={() => searchByText(searchText)}
+               >
+                  ИСКАТЬ
+               </button>
+            </div>
             <div className="categories__names">
                <ul className="categories__list">
                   {categories.map((category) => {

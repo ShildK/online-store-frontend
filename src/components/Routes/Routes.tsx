@@ -32,6 +32,7 @@ const AppRoutes = () => {
             <Route path="cart" element={<Cart />} />
             <Route path="registration" element={<Registration />} />
             <Route path="authorization" element={<Authorization />} />
+            
          </Route>
       )
    );

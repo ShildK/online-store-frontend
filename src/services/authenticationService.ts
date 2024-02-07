@@ -17,7 +17,7 @@ export class AuthenticationService {
          return response.status === 201;
       } catch (error) {
         if (error instanceof Error) {
-            console.error('Login failed:', error.message);
+            console.error("Login failed:", error.message);
         }
         return false;
       }

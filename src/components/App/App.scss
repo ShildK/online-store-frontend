@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=Federo&family=Lobster&family=Merriweather&family=Merriweather+Sans&family=Montserrat:wght@400;500;600;700&family=Open+Sans&family=Pacifico&family=Potta+One&family=Roboto:wght@400;500;700;900&family=Work+Sans:wght@300;400&display=swap");
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+}
+a {
+    text-decoration: none;
+}
+button {
+    cursor: pointer;
+}
+ul,
+ol,
+li {
+    list-style: none;
+}
+li {
+    cursor: pointer;
+}
+img {
+    vertical-align: top;
+}
+html,
+body {
+    height: 100%;
+    line-height: 1;
+    font-family: "Roboto", sans-serif;
+}
+.app {
+    min-height: 100%;
+    overflow: hidden;
+}
