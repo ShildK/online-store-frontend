@@ -42,11 +42,13 @@ const Products: React.FC = () => {
    }, [categoryId, orderBy]);
 
    const updateProducts = async () => {
+      debugger
       let productFilter = new ProductFilter();
       productFilter.categoryId = _categoryId;
 
       const queryParameters = new URLSearchParams(window.location.search)
       const searchText = queryParameters.get("searchText")
+
       if(searchText != null && searchText != ""){
          productFilter.text = searchText;
       }

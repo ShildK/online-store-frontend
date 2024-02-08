@@ -79,7 +79,7 @@ const Header: React.FC = () => {
                         Выйти
                      </button>
                   ) : (
-                     <Link className="header__log-in" to="/authorization">
+                     <Link className="header__log-in" to="/auth/authorization">
                         Войти
                      </Link>
                   )}

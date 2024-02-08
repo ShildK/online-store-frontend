@@ -107,7 +107,7 @@ const Authorization: React.FC = () => {
                      <p className="authorization__to-registration">
                         Если Вы еще не зарегистрированны, перейдите по ссылке:
                      </p>
-                     <Link className="link" to="/registration">
+                     <Link className="link" to="/auth/registration">
                         Зарегистрироваться
                      </Link>
                   </div>

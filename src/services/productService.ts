@@ -3,7 +3,6 @@ import { Category } from "../types/category";
 import { FilterResponse } from "./models/filterResponse";
 import { ProductFilter } from "./models/productFilter";
 import { ProductResponse } from "./models/productResponse";
-import { debug, log } from "console";
 import axios from "axios";
 import { BACKEND_URL } from "../components/App/App";
 

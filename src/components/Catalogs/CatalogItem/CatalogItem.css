@@ -13,15 +13,44 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: 10px;
 }
 .catalog-item .catalog-item__icon {
   width: 42px;
   height: 42px;
-  margin: 28px 0 0 12px;
+  margin: 28px 0 5px 0;
 }
 .catalog-item .catalog-item__title {
   text-align: center;
   font-weight: 500;
   font-size: 15px;
   color: #333333;
+}
+@media (max-width: 780px) {
+  .catalog-item {
+    width: 118px;
+    height: 118px;
+  }
+  .catalog-item .catalog-item__icon {
+    width: 32px;
+    height: 32px;
+  }
+  .catalog-item .catalog-item__title {
+    font-size: 14px;
+  }
+}
+@media (max-width: 430px) {
+  .catalog-item {
+    width: 110px;
+    height: 110px;
+    padding: 3px;
+  }
+  .catalog-item .catalog-item__icon {
+    width: 32px;
+    height: 32px;
+    margin: 18px 0 5px 0;
+  }
+  .catalog-item .catalog-item__title {
+    font-size: 14px;
+  }
 }

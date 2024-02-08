@@ -54,7 +54,6 @@ export class AuthenticationService {
       let userLS = localStorage.getItem("user");
       if (userLS === null) return null;
       let user: User = JSON.parse(userLS);
-      // let user = Object.assign(new User(), JSON.parse(userLS))
       return user;
    }
    logout() {

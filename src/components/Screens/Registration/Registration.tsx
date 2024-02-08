@@ -19,7 +19,7 @@ const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{2,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{6,24}$/;
 const EMAIL_REGEX =
    /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;
-const REGISTER_URL = "/registration";
+const REGISTER_URL = "/auth/registration";
 
 const Registration: React.FC = (props) => {
    const userRef = useRef<HTMLInputElement | null>(null);
@@ -137,7 +137,7 @@ const Registration: React.FC = (props) => {
             <section>
                <div className="success-message">
                   <h2 className="registration__title">Вы зарегистрированны</h2>
-                  <Link className="link" to="/authorization">
+                  <Link className="link" to="/auth/authorization">
                      Ввойти
                   </Link>
                </div>
@@ -282,7 +282,7 @@ const Registration: React.FC = (props) => {
                      <p className="registration__to-autorization">
                         Если Вы уже зарегистрированны, перейдите по ссылке:
                      </p>
-                     <Link className="link" to="/authorization">
+                     <Link className="link" to="/auth/authorization">
                         Ввойти
                      </Link>
                   </div>

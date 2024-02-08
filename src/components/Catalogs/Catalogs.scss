@@ -1,11 +1,12 @@
 .catalods {
-    max-width: 1110px;
+    max-width: 100%;
     margin: 50px auto;
-}
-.catalogs__title {
-    margin: 0 0 20px;
-}
-.catalogs__items {
-    display: flex;
-    justify-content: space-between;
+    .catalogs__title {
+        margin: 0 0 20px 15px;
+    }
+    .catalogs__items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
 }

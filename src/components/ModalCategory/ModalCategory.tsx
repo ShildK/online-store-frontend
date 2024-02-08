@@ -41,7 +41,7 @@ const ModalCategory: React.FC<TProps> = ({ isHovered }) => {
       );
    };
 
-   const renderCategories = (parentId = 0) => {
+   const renderCategories = (parentId = null) => {
       return categories
          .filter((category) => category.parentId === parentId)
          .map((category) => (
@@ -52,7 +52,7 @@ const ModalCategory: React.FC<TProps> = ({ isHovered }) => {
                onMouseLeave={() => setHoveredId(0)}
             >
                <div className="category__parent">
-                  {category.parentId === 0 && (
+                  {category.parentId === null && (
                      <div>
                         <img src={category.icon} alt="" />
                      </div>
@@ -116,7 +116,7 @@ const ModalCategory: React.FC<TProps> = ({ isHovered }) => {
                <div className="modal__phone">{renderCategories()}</div>
                <ul className="categories__list">
                   {categories.map((category) => {
-                     if (category.parentId === 0) {
+                     if (category.parentId === null) {
                         return (
                            <li
                               className="category"
@@ -206,7 +206,7 @@ const ModalCategory: React.FC<TProps> = ({ isHovered }) => {
             <div className="subcategories__names">
                <ul className="subcategories__list">
                   {categories.map((category) => {
-                     if (hoveredId == category.parentId && hoveredId !== 0) {
+                     if (hoveredId == category.parentId && hoveredId !== null) {
                         return (
                            <Link
                               to={`/products/${category.id}`}

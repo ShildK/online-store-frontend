@@ -1,12 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
    Route,
-   Routes,
    Outlet,
    createBrowserRouter,
    createRoutesFromElements,
    RouterProvider,
-   BrowserRouter,
 } from "react-router-dom";
 
 import Home from "../Screens/Home/Home";
@@ -22,18 +20,25 @@ import Cart from "../Screens/Cart/Cart";
 const AppRoutes = () => {
    const router = createBrowserRouter(
       createRoutesFromElements(
-         <Route path="/" element={<RootLayout />}>
-            <Route index element={<Home />} />
-            <Route path="home" element={<Home />} />
-            <Route path="products" element={<Products />} />
-            <Route path="products/:categoryId" element={<Products />} />
-            <Route path="products/:searchText" element={<Products />} />
-            <Route path="products/item/:productId" element={<SingleProduct />} />
-            <Route path="cart" element={<Cart />} />
-            <Route path="registration" element={<Registration />} />
-            <Route path="authorization" element={<Authorization />} />
-            
-         </Route>
+            <>
+               <Route path="/" element={<RootLayout />}>
+                  <Route index element={<Home />} />
+                  <Route path="home" element={<Home />} />
+                  <Route path="products" element={<Products />} />
+                  <Route path="products/:categoryId" element={<Products />} />
+                  <Route path="products/:searchText" element={<Products />} />
+                  <Route
+                     path="products/item/:productId"
+                     element={<SingleProduct />}
+                  />
+                  <Route path="cart" element={<Cart />} />
+               </Route>
+               <Route path="/auth" element={<SimpleLayout />}>
+                  <Route index element={<Authorization />} />
+                  <Route path="registration" element={<Registration />} />
+                  <Route path="authorization" element={<Authorization />} />
+               </Route>
+            </>
       )
    );
 
@@ -49,11 +54,11 @@ const AppRoutes = () => {
       );
    }
 
-   return (
-      // <BrowserRouter>
-         <RouterProvider router={router} />
-      // </BrowserRouter>
-   );
+   function SimpleLayout() {
+      return <Outlet />;
+   }
+
+   return <RouterProvider router={router} />;
 };
 
 export default AppRoutes;
