@@ -16,12 +16,11 @@
 
     .header__body {
         width: 100%;
-        height: 70px;
         background-color: rgb(247, 247, 247);
         box-shadow: 2px 2px 10px rgb(236, 236, 236);
 
         .header__content {
-            width: 1440px;
+            width: 80%;
             margin: 0 auto;
 
             display: flex;
@@ -124,7 +123,7 @@
             }
         }
     }
-    @media (max-width: 1140px) {
+    @media (max-width: 1180px) {
         & {
             background-size: 100% 43px;
             .header__greeting {
@@ -140,7 +139,7 @@
                 display: flex;
                 align-items: center;
                 .header__content {
-                    width: 840px;
+                    width: 80%;
                     margin: 0 auto;
                     .header__logo {
                         .logo {
@@ -275,16 +274,14 @@
             }
         }
     }
-    @media (max-width: 420px) {
+    @media (max-width: 530px) {
         & {
-            height: 35px;
             .header__greeting {
                 display: none;
             }
-
             .header__body {
                 width: 100%;
-                height: 40px;
+                height: 50px;
                 .header__content {
                     .header__logo {
                         display: none;

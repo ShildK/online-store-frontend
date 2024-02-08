@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./ProductCard.css";
 import { IoCart } from "react-icons/io5";
-import { Product } from "../../types/product";
 import { TProduct } from "../../types/others";
 import { CartService } from "../../services/cartService";
 import { FRONTEND_URL } from "../App/App";
@@ -31,19 +30,19 @@ const ProductCard: React.FC<TProps> = ({ product }) => {
    return (
       <div className="product">
          <div className="product__handler" onClick={handler}>
-            <img className="product_image" src={product.image} alt="" />
-            <h3 className="product_name">{product.name}</h3>
+            <img className="product__image" src={product.image} alt="" />
+            <h3 className="product__name">{product.name}</h3>
          </div>
-         <div className="product_buy">
+         <div className="product__buy">
             <div>
-               <p className="product_price_for_one">{product.price}₸/шт.</p>
-               <p className="product_price">{product.price}₸</p>
+               <p className="product__price-for-one">{product.price}₸/шт.</p>
+               <p className="product__price">{product.price}₸</p>
             </div>
-            <button onClick={addProductToCart} className="product_buy_btn">
+            <button onClick={addProductToCart} className="product__buy-btn">
                <IoCart />
             </button>
          </div>
-         {showMessage && <p>Продукт добавлен</p>}
+         {showMessage && <p className="product__message">Продукт добавлен</p>}
       </div>
    );
 };

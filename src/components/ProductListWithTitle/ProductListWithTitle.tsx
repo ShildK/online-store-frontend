@@ -1,6 +1,5 @@
 import "./ProductListWithTitle.css";
 import { FC } from "react";
-import { TSetState } from "../../types/others";
 
 import ProductCard from "../ProductCard/ProductCard";
 import { Product } from "../../types/product";

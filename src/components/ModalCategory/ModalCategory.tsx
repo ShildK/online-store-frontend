@@ -14,8 +14,6 @@ interface TProps {
 const ModalCategory: React.FC<TProps> = ({ isHovered }) => {
    const [hoveredId, setHoveredId] = useState<number>(0);
    const [categories, setCategories] = useState<Category[]>([]);
-   const [subCategories, setSubCategories] = useState<Category[]>([]);
-   const [showSubCategories, setShowSubCategories] = useState<boolean>(false);
 
    const [searchText, setSearchText] = useState<string>("");
 
@@ -43,16 +41,6 @@ const ModalCategory: React.FC<TProps> = ({ isHovered }) => {
       );
    };
 
-   const handleCategoryClick = (categoryId: number) => {
-      // const subCategories = categories.filter(
-      //    (subCategory) => subCategory.parentId === hoveredId
-      // );
-      // setSubCategories(subCategories);
-      console.log(categoryId);
-
-      setShowSubCategories(true);
-   };
-
    const renderCategories = (parentId = 0) => {
       return categories
          .filter((category) => category.parentId === parentId)
@@ -62,7 +50,6 @@ const ModalCategory: React.FC<TProps> = ({ isHovered }) => {
                key={category.id}
                onMouseEnter={() => handleMouseEnter(category.id)}
                onMouseLeave={() => setHoveredId(0)}
-               onClick={() => handleCategoryClick(hoveredId)}
             >
                <div className="category__parent">
                   {category.parentId === 0 && (
@@ -80,9 +67,23 @@ const ModalCategory: React.FC<TProps> = ({ isHovered }) => {
                </div>
 
                <ul>
-                  {hoveredId === category.id && renderCategories(category.id)}
+                  {hoveredId === category.id && renderSubCategory(category.id)}
                </ul>
             </li>
+         ));
+   };
+
+   const renderSubCategory = (categoryId: number) => {
+      return categories
+         .filter((category) => category.parentId === categoryId)
+         .map((category) => (
+            <Link
+               className="subcategory"
+               to={`/products/${category.id}`}
+               key={category.id}
+            >
+               <p>{category.name}</p>
+            </Link>
          ));
    };
 
@@ -121,7 +122,6 @@ const ModalCategory: React.FC<TProps> = ({ isHovered }) => {
                               className="category"
                               key={category.id}
                               onMouseEnter={() => handleMouseEnter(category.id)}
-                              onMouseLeave={() => setHoveredId(0)}
                            >
                               <div className="category__image">
                                  <img src={category.icon} alt="" />
@@ -215,7 +215,7 @@ const ModalCategory: React.FC<TProps> = ({ isHovered }) => {
                               <li className="subcategory" key={category.id}>
                                  <img src={category.icon} alt="" />
                                  <p>{category.name}</p>
-                              </li>{" "}
+                              </li>
                            </Link>
                         );
                      }

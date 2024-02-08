@@ -16,12 +16,12 @@ const Home: React.FC = () => {
    useEffect(() => {
       (async () => {
          const _hits = await productService.getProducts({
-            priceFrom: 2000,
+            priceFrom: 2100,
             priceTo: undefined,
             categoryId: undefined,
             brand: undefined,
             orderBy: "PriceDESC",
-            limit: 5,
+            limit: 6,
             pageNumber: 1,
             text: undefined,
          });
@@ -32,7 +32,7 @@ const Home: React.FC = () => {
             categoryId: undefined,
             brand: undefined,
             orderBy: "PriceASC",
-            limit: 5,
+            limit: 6,
             pageNumber: 1,
             text: undefined,
          });
@@ -43,7 +43,7 @@ const Home: React.FC = () => {
             categoryId: undefined,
             brand: undefined,
             orderBy: "PriceASC",
-            limit: 5,
+            limit: 6,
             pageNumber: 1,
             text: undefined,
          });
@@ -56,10 +56,6 @@ const Home: React.FC = () => {
          <div className="home__carusel">
             <img src="./img/image-1.jpg" alt="" />
          </div>
-         {/* <div className="home__navigation">
-            <div className="home__navigation-block"></div>
-            <div className="home__navigation-block"></div>
-         </div> */}
          <div className="home__products-recommendations">
             <ProductListWithTitle title="Хиты продаж" products={hits} />
             <ProductListWithTitle title="Новинки" products={newProducts} />
