@@ -29,7 +29,6 @@ const Header: React.FC = () => {
    return (
       <div className="header">
          <div className="header__greeting">
-            
             <h2 className="header__title">Лучшие товары по лучшим ценам!</h2>
          </div>
          
@@ -52,7 +51,7 @@ const Header: React.FC = () => {
                   >
                      <IoMenu />
                      
-                  <ModalCategory isHovered={isHovered} />
+                  <ModalCategory isHovered={isHovered} setHovered={setHovered} />
                   </div>
                   <div className="header__input-search">
                      <IoSearchSharp />

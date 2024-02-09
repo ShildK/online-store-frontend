@@ -6,10 +6,9 @@ import ProductCard from "../../ProductCard/ProductCard";
 import { ProductService } from "../../../services/productService";
 import { ProductFilter } from "../../../services/models/productFilter";
 import { Category } from "../../../types/category";
-import { ProductResponse } from "../../../services/models/productResponse";
 import { FilterResponse } from "../../../services/models/filterResponse";
 import { Product } from "../../../types/product";
-import { log } from "console";
+import ModalFiltersWindow from "../../ModalFiltersWindow/ModalFiltersWindow";
 
 const Products: React.FC = () => {
    const { categoryId } = useParams();
@@ -19,6 +18,7 @@ const Products: React.FC = () => {
 
    const [categories, setCategories] = useState<Category[]>([]);
    const [products, setProducts] = useState<Product[]>([]);
+   const [isHovered, setHovered] = useState<boolean>(false);
    const [filter, setFilter] = useState<FilterResponse>({
       priceMin: undefined,
       priceMax: undefined,
@@ -42,14 +42,13 @@ const Products: React.FC = () => {
    }, [categoryId, orderBy]);
 
    const updateProducts = async () => {
-      debugger
       let productFilter = new ProductFilter();
       productFilter.categoryId = _categoryId;
 
-      const queryParameters = new URLSearchParams(window.location.search)
-      const searchText = queryParameters.get("searchText")
+      const queryParameters = new URLSearchParams(window.location.search);
+      const searchText = queryParameters.get("searchText");
 
-      if(searchText != null && searchText != ""){
+      if (searchText != null && searchText != "") {
          productFilter.text = searchText;
       }
       if (priceMin != undefined) {
@@ -94,17 +93,26 @@ const Products: React.FC = () => {
       <section className="products">
          <div className="products__header">
             <h2>{categoryName}</h2>
-            <select
-               className="filter-select"
-               defaultValue="Выберите из списка"
-               onChange={(e) => setOrderBy(e.target.value)}
-            >
-               <option disabled value="">
-                  Выберите из списка
-               </option>
-               <option value="PriceASC">По возрастанию цены</option>
-               <option value="PriceDESC">По убыванию цены</option>
-            </select>
+            <div className="filter">
+               <div className="filter__phone">
+                  <button className="filter__phone-btn" onClick={() => setHovered(true)}>Фильтры</button>
+                  <ModalFiltersWindow
+                     isHovered={isHovered}
+                     setHovered={setHovered}
+                  />
+               </div>
+               <select
+                  className="filter-select"
+                  defaultValue="Выберите из списка"
+                  onChange={(e) => setOrderBy(e.target.value)}
+               >
+                  <option disabled value="">
+                     Выберите из списка
+                  </option>
+                  <option value="PriceASC">По возрастанию цены</option>
+                  <option value="PriceDESC">По убыванию цены</option>
+               </select>
+            </div>
          </div>
          <div className="products__content">
             <div className="products__filter">
@@ -147,7 +155,9 @@ const Products: React.FC = () => {
                      })}
                   </select>
                </div>
-               <button onClick={handlerFilter}>Найти</button>
+               <button className="product__filter-btn" onClick={handlerFilter}>
+                  Найти
+               </button>
             </div>
             <div className="products__items">
                {products.map((product) => {

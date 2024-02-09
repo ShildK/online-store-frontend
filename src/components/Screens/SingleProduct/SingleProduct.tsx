@@ -83,10 +83,9 @@ const SingleProduct: React.FC = () => {
                      <p className="product-item__text">{product.message}</p>
                   </div>
                </div>
+               <Link className="product-item__link" to="/products">Все продукты</Link>
             </div>
-         )}
-
-         <Link to="/products">Back to products</Link>
+         )}       
          <ProductListWithTitle title="Рекомендуемые товары" products={hits} />
       </section>
    );

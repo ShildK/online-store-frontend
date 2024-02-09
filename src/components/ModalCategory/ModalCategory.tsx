@@ -6,12 +6,14 @@ import { Link } from "react-router-dom";
 import { ProductService } from "../../services/productService";
 import { Category } from "../../types/category";
 import { FRONTEND_URL } from "../App/App";
+import { TSetState } from "../../types/others";
 
 interface TProps {
    isHovered: boolean;
+   setHovered: TSetState<boolean>;
 }
 
-const ModalCategory: React.FC<TProps> = ({ isHovered }) => {
+const ModalCategory: React.FC<TProps> = ({ isHovered, setHovered }) => {
    const [hoveredId, setHoveredId] = useState<number>(0);
    const [categories, setCategories] = useState<Category[]>([]);
 
@@ -23,12 +25,6 @@ const ModalCategory: React.FC<TProps> = ({ isHovered }) => {
          setCategories(categories);
       })();
    }, []);
-
-   useEffect(() => {
-      console.log(hoveredId);
-   }, [hoveredId]);
-
-   console.log(categories);
 
    const handleMouseEnter = (id: number) => {
       setHoveredId(id);
@@ -49,7 +45,7 @@ const ModalCategory: React.FC<TProps> = ({ isHovered }) => {
                className="category"
                key={category.id}
                onMouseEnter={() => handleMouseEnter(category.id)}
-               onMouseLeave={() => setHoveredId(0)}
+               // onMouseLeave={() => setHoveredId(0)}
             >
                <div className="category__parent">
                   {category.parentId === null && (
@@ -57,7 +53,6 @@ const ModalCategory: React.FC<TProps> = ({ isHovered }) => {
                         <img src={category.icon} alt="" />
                      </div>
                   )}
-
                   <Link
                      className="categories__link"
                      to={`/products/${category.id}`}
@@ -66,7 +61,7 @@ const ModalCategory: React.FC<TProps> = ({ isHovered }) => {
                   </Link>
                </div>
 
-               <ul>
+               <ul className="categories__children">
                   {hoveredId === category.id && renderSubCategory(category.id)}
                </ul>
             </li>
@@ -77,20 +72,31 @@ const ModalCategory: React.FC<TProps> = ({ isHovered }) => {
       return categories
          .filter((category) => category.parentId === categoryId)
          .map((category) => (
-            <Link
-               className="subcategory"
-               to={`/products/${category.id}`}
-               key={category.id}
-            >
-               <p>{category.name}</p>
-            </Link>
+            <div className="subcategory__item">
+               <img src={category.icon} alt="" />
+               <Link
+                  className="subcategory"
+                  to={`/products/${category.id}`}
+                  key={category.id}
+                  onClick={() => {
+                     setHovered(false);
+                  }}
+               >
+                  <p>{category.name}</p>
+               </Link>
+            </div>
          ));
    };
 
    return (
       <div className={`modal ${isHovered ? "visible" : ""}`}>
          <div className="modal__close">
-            <button className="modal__close-btn">
+            <button
+               onClick={() => {
+                  setHovered(false);
+               }}
+               className="modal__close-btn"
+            >
                <IoClose />
             </button>
          </div>
@@ -136,71 +142,6 @@ const ModalCategory: React.FC<TProps> = ({ isHovered }) => {
                         );
                      }
                   })}
-
-                  {/* <li className="category">
-                  <div className="fruts">
-                     <LuApple />
-                  </div>
-                  <Link className="categories__link" to="/products/categiryId">
-                     Свежие овощи и фрукты
-                  </Link>
-               </li>
-               <li className="category">
-                  <div className="milk">
-                     <LuMilk />
-                  </div>
-                  <Link className="categories__link" to="/products/categiryId">
-                     Молоко, сыр, масло, яйца
-                  </Link>
-               </li>
-               <li className="category">
-                  <div className="sausage">
-                     <TbSausage />
-                  </div>
-                  <Link className="categories__link" to="/products/categiryId">
-                     Колбасы
-                  </Link>
-               </li>
-               <li className="category">
-                  <div className="meat">
-                     <TbMeat />
-                  </div>
-                  <Link className="categories__link" to="/products/categiryId">
-                     Мясо, птица
-                  </Link>
-               </li>
-               <li className="category">
-                  <div className="cereal">
-                     <CiWheat />
-                  </div>
-                  <Link className="categories__link" to="/products/categiryId">
-                     Крупы, консервы, снеки
-                  </Link>
-               </li>
-               <li className="category">
-                  <div className="fish">
-                     <LuFish />
-                  </div>
-                  <Link className="categories__link" to="/products/categiryId">
-                     Рыба и морепродукты
-                  </Link>
-               </li>
-               <li className="category">
-                  <div className="candy">
-                     <LuCandy />
-                  </div>
-                  <Link className="categories__link" to="/products/categiryId">
-                     Сладости
-                  </Link>
-               </li>
-               <li className="category">
-                  <div className="beauty">
-                     <LuFlower />
-                  </div>
-                  <Link className="categories__link" to="/products/categiryId">
-                     Красота
-                  </Link>
-               </li> */}
                </ul>
             </div>
             <div className="subcategories__names">

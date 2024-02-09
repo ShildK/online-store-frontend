@@ -10,7 +10,6 @@ interface TProps {
 }
 
 const ProductListWithTitle: FC<TProps> = ({ title, products }) => {
-   console.log(products);
 
    return (
       <div className="products-list">

@@ -1,0 +1,73 @@
+.block__input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.block__input .registration__input {
+  width: 95%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 6px;
+  -webkit-box-shadow: 5px 5px 5px rgb(204, 204, 204);
+          box-shadow: 5px 5px 5px rgb(204, 204, 204);
+}
+.block__input .registration__input ::-webkit-input-placeholder {
+  font-weight: 500;
+  font-size: 17px;
+  color: rgb(159, 159, 159);
+}
+.block__input .registration__input ::-moz-placeholder {
+  font-weight: 500;
+  font-size: 17px;
+  color: rgb(159, 159, 159);
+}
+.block__input .registration__input :-ms-input-placeholder {
+  font-weight: 500;
+  font-size: 17px;
+  color: rgb(159, 159, 159);
+}
+.block__input .registration__input ::-ms-input-placeholder {
+  font-weight: 500;
+  font-size: 17px;
+  color: rgb(159, 159, 159);
+}
+.block__input .registration__input ::placeholder {
+  font-weight: 500;
+  font-size: 17px;
+  color: rgb(159, 159, 159);
+}
+.block__input .registration__input :focus {
+  border: 1px solid #53c95a;
+  outline: none;
+}
+.block__input .red:focus {
+  border: 1px solid red;
+  outline: none;
+}
+.block__input .hide {
+  display: none;
+}
+.block__input .valid {
+  color: limegreen;
+  margin-left: 0.25rem;
+}
+.block__input .invalid {
+  color: red;
+  margin-left: 0.25rem;
+}
+.block__input .instructions {
+  padding: 5px;
+  font-size: 13px;
+  color: #4f4f4f;
+}
+.block__input .instructions > svg {
+  margin-right: 5px;
+}
+.block__input .offscreen {
+  position: absolute;
+  left: -9999px;
+}

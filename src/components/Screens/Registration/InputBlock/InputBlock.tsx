@@ -1,4 +1,5 @@
 import React from "react";
+import "./InputBlock.css"
 import {
    faCheck,
    faTimes,

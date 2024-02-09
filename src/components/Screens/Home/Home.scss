@@ -22,13 +22,6 @@
             height: 100%;
         }
     }
-    @media (max-width: 780px) {
-        & {
-            .home__carusel img {
-                margin-top: -30px;
-            }
-        }
-    }
     @media (max-width: 430px) {
         & {
             max-width: 100%;

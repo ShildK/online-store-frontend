@@ -25,11 +25,22 @@ const Authorization: React.FC = () => {
 
    const handlerSubmit = async (e: React.ChangeEvent<any>) => {
       e.preventDefault();
-      let user = await new AuthenticationService().login(email, password);
-      if (user != null) {
-         setEmail("");
-         setPassword("");
-         setSuccess(true);
+      try {
+         let user = await new AuthenticationService().login(email, password);
+         if (user != null) {
+            setEmail("");
+            setPassword("");
+            setSuccess(true);
+         }
+         else{
+            setErrorMessage("Ошибка входа, попробуйте еще раз");
+         }
+         if (success) {
+            window.location.href = FRONTEND_URL + `/home`;
+         }
+      } catch (err) {
+         setErrorMessage("Ошибка входа, попробуйте еще раз");
+         errRef.current?.focus();
       }
    };
    const login = () => {
@@ -38,82 +49,69 @@ const Authorization: React.FC = () => {
    };
    return (
       <Container>
-         {success ? (
-            <section>
-               <div className="success-message">
-                  <div onClick={login}>
-                     <h2 className="authorization__title">Вы авторизованы</h2>
-                     <Link className="link" to="/home">
-                        Перейти на главную страницу
-                     </Link>
-                  </div>
-               </div>
-            </section>
-         ) : (
-            <section>
-               <div className="authorization">
-                  <p
-                     ref={errRef}
-                     className={errorMessage ? "error-message" : "offscreen"}
-                     aria-live="assertive"
+         <section>
+            <div className="authorization">
+               <p
+                  ref={errRef}
+                  className={errorMessage ? "error-message" : "offscreen"}
+                  aria-live="assertive"
+               >
+                  {errorMessage}
+               </p>
+               <div className="authorization__body">
+                  <Link to="/home">
+                     <img
+                        src={`${process.env.PUBLIC_URL}/img/logo.png`}
+                        alt=""
+                     />
+                  </Link>
+
+                  <h2 className="authorization__title">
+                     Приветствуем в <span>"Happy Famaely"</span>!
+                  </h2>
+                  <p className="authorization__subtitle">Авторизируйтесь</p>
+
+                  <form
+                     onSubmit={handlerSubmit}
+                     className="authorization__form"
                   >
-                     {errorMessage}
-                  </p>
-                  <div className="authorization__body">
-                     <Link to="/home">
-                        <img
-                           src={`${process.env.PUBLIC_URL}/img/logo.png`}
-                           alt=""
-                        />
-                     </Link>
+                     <input
+                        className="authorization__input"
+                        type="text"
+                        autoComplete="off"
+                        onChange={(e) => setEmail(e.target.value)}
+                        value={email}
+                        required
+                     />
+                     <input
+                        className="authorization__input"
+                        type="password"
+                        autoComplete="off"
+                        onChange={(e) => setPassword(e.target.value)}
+                        value={password}
+                        required
+                     />
 
-                     <h2 className="authorization__title">
-                        Приветствуем в <span>"Happy Famaely"</span>!
-                     </h2>
-                     <p className="authorization__subtitle">Авторизируйтесь</p>
-
-                     <form
-                        onSubmit={handlerSubmit}
-                        className="authorization__form"
+                     <button
+                        className={
+                           email && password
+                              ? "authorization__button active"
+                              : "authorization__button disabled"
+                        }
+                        disabled={!email || !password ? true : false}
                      >
-                        <input
-                           className="authorization__input"
-                           type="text"
-                           autoComplete="off"
-                           onChange={(e) => setEmail(e.target.value)}
-                           value={email}
-                           required
-                        />
-                        <input
-                           className="authorization__input"
-                           type="password"
-                           autoComplete="off"
-                           onChange={(e) => setPassword(e.target.value)}
-                           value={password}
-                           required
-                        />
-
-                        <button
-                           className={
-                              email && password
-                                 ? "authorization__button active"
-                                 : "authorization__button disabled"
-                           }
-                           disabled={!email || !password ? true : false}
-                        >
-                           Войти
-                        </button>
-                     </form>
-                     <p className="authorization__to-registration">
-                        Если Вы еще не зарегистрированны, перейдите по ссылке:
-                     </p>
-                     <Link className="link" to="/auth/registration">
-                        Зарегистрироваться
-                     </Link>
-                  </div>
+                        Войти
+                     </button>
+                  </form>
+                  <p className="authorization__to-registration">
+                     Если Вы еще не зарегистрированны, перейдите по ссылке:
+                  </p>
+                  <Link className="link" to="/auth/registration">
+                     Зарегистрироваться
+                  </Link>
                </div>
-            </section>
-         )}
+            </div>
+         </section>
       </Container>
    );
 };

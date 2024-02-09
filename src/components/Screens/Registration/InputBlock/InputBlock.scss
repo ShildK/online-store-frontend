@@ -1,0 +1,52 @@
+.block__input {
+    display: flex;
+    align-items: center;
+    .registration__input {
+        width: 95%;
+        padding: 10px;
+        margin: 10px 0;
+
+        border: 1px solid rgb(204, 204, 204);
+        border-radius: 6px;
+        box-shadow: 5px 5px 5px rgb(204, 204, 204);
+        & ::placeholder {
+            font-weight: 500;
+            font-size: 17px;
+            color: rgb(159, 159, 159);
+        }
+        & :focus {
+            border: 1px solid #53c95a;
+            outline: none;
+        }
+    }
+    .red:focus {
+        border: 1px solid red;
+        outline: none;
+    }
+    .hide {
+        display: none;
+    }
+
+    .valid {
+        color: limegreen;
+        margin-left: 0.25rem;
+    }
+    .invalid {
+        color: red;
+        margin-left: 0.25rem;
+    }
+    .instructions {
+        padding: 5px;
+        font-size: 13px;
+        color: #4f4f4f;
+    }
+
+    .instructions > svg {
+        margin-right: 5px;
+    }
+
+    .offscreen {
+        position: absolute;
+        left: -9999px;
+    }
+}

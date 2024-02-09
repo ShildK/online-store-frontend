@@ -1,0 +1,258 @@
+.registration {
+    width: 45%;
+    min-height: 590px;
+    margin: 140px auto;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 2px 2px 10px rgb(187, 187, 187);
+    .error-message {
+        background-color: lightpink;
+        color: firebrick;
+        font-weight: bold;
+        padding: 8px;
+        margin-bottom: 8px;
+    }
+    .offscreen {
+        position: absolute;
+        left: -9999px;
+    }
+    .registration__body {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 10px;
+        & img {
+            width: 150px;
+            margin: 0 0 30px;
+        }
+        .registration__title {
+            margin-bottom: 10px;
+            font-size: 24px;
+            color: #4f4f4f;
+            & span {
+                color: #53c95a;
+            }
+        }
+        .registration__subtitle {
+            margin-bottom: 30px;
+            font-size: 16px;
+            color: rgb(159, 159, 159);
+        }
+        .registration__form {
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+            .block__input {
+                display: flex;
+                align-items: center;
+                .registration__input {
+                    width: 95%;
+                    padding: 10px;
+                    margin: 10px 0;
+
+                    border: 1px solid rgb(204, 204, 204);
+                    border-radius: 6px;
+                    box-shadow: 5px 5px 5px rgb(204, 204, 204);
+                    font-size: 17px;
+                    color: #4f4f4f;
+                }
+                .registration__input::placeholder {
+                    font-weight: 500;
+                    font-size: 17px;
+                    color: rgb(159, 159, 159);
+                }
+                .registration__input:focus {
+                    border: 1px solid #53c95a;
+                    outline: none;
+                }
+                .red:focus {
+                    border: 1px solid red;
+                    outline: none;
+                }
+                .hide {
+                    display: none;
+                }
+
+                .valid {
+                    color: limegreen;
+                    margin-left: 4px;
+                }
+
+                .invalid {
+                    color: red;
+                    margin-left: 4px;
+                }
+            }
+            .instructions {
+                padding: 5px;
+                font-size: 13px;
+                color: #4f4f4f;
+            }
+
+            .instructions > svg {
+                margin-right: 5px;
+            }
+            .offscreen {
+                position: absolute;
+                left: -9999px;
+            }
+            .registration__button {
+                width: 70%;
+                padding: 12px 24px;
+                margin: 30px auto 30px;
+
+                border-radius: 30px;
+                border: none;
+
+                color: #fff;
+                font-size: 18px;
+                font-weight: 600;
+            }
+            .active {
+                background-color: #53c95a;
+            }
+            .active:hover {
+                background-color: #5ce965;
+                transition: 0.2s;
+            }
+            .disabled {
+                background-color: #91cc95;
+            }
+        }
+        .registration__to-autorization {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #747474;
+        }
+        .link {
+            font-weight: 600;
+            font-size: 18px;
+            color: #53c95a;
+        }
+    }
+    @media (max-width: 1240px) {
+        min-width: 470px;
+        min-height: 570px;
+        margin: 120px auto;
+
+        .registration__body {
+            & img {
+                width: 130px;
+                margin: 10px 0 30px;
+            }
+            .registration__title {
+                font-size: 22px;
+                text-align: center;
+            }
+            .registration__subtitle {
+                font-size: 15px;
+                text-align: center;
+            }
+            .registration__form {
+                .block__input {
+                    .registration__input {
+                        font-size: 15px;
+                    }
+                    .registration__input ::placeholder {
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
+    }
+    @media (max-width: 780px) {
+        min-width: 430px;
+        min-height: 520px;
+        margin: 120px auto;
+        .registration__body {
+            & img {
+                width: 110px;
+                margin: 10px 0 30px;
+            }
+            .registration__title {
+                font-size: 20px;
+            }
+            .registration__subtitle {
+                font-size: 14px;
+                margin-bottom: 20px;
+            }
+            .registration__form {
+                .block__input {
+                    .registration__input{
+                        font-size: 14px;
+                        margin: 7px 0;
+                    }
+                    .registration__input ::placeholder {
+                        font-size: 14px;
+                    }
+                }
+                .instructions {
+                    padding: 5px;
+                    font-size: 12px;
+                }
+                .registration__button {
+                    padding: 10px 22px;
+                    border-radius: 22px;
+                    font-size: 16px;
+                    font-weight: 600;
+                }
+            }
+            .registration__to-autorization {
+                font-size: 14px;
+            }
+            .link {
+                font-size: 16px;
+            }
+        }
+    }
+    @media (max-width: 430px) {
+        width: 100%;
+        min-width: 280px;
+        min-height: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0px auto;
+        padding: 20px;
+        box-shadow: none;
+        .registration__body {
+            .registration__title {
+                font-size: 18px;
+            }
+            .registration__subtitle {
+                font-size: 13px;
+            }
+            .registration__form {
+                .block__input {
+                    .registration__input{
+                        font-size: 13px;
+                    }
+                    .registration__input ::placeholder {
+                        font-size: 13px;
+                    }
+                }
+                .instructions {
+                    width: 90%;
+                    padding: 5px;
+                    font-size: 12px;
+                }
+                .registration__button {
+                    width: 90%;
+                    padding: 10px 10px;
+                    border-radius: 22px;
+                    font-size: 13px;
+                    font-weight: 500;
+                }
+            }
+            .registration__to-autorization {
+                width: 90%;
+                font-size: 12px;
+                text-align: center;
+            }
+            .link {
+                font-size: 14px;
+            }
+        }
+    }
+}

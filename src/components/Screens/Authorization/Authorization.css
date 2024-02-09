@@ -1,127 +1,275 @@
 .authorization {
-   width: 520px;
-   min-height: 530px;
-   margin: 150px auto;
-   padding: 10px;
-   border-radius: 12px;
-   box-shadow: 2px 2px 10px rgb(187, 187, 187);
+  width: 45%;
+  min-height: 590px;
+  margin: 140px auto;
+  padding: 10px;
+  border-radius: 12px;
+  -webkit-box-shadow: 2px 2px 10px rgb(187, 187, 187);
+          box-shadow: 2px 2px 10px rgb(187, 187, 187);
 }
-.authorization__body {
-   display: flex;
-   align-items: center;
-   flex-direction: column;
-   justify-content: center;
+.authorization .error-message {
+  background-color: lightpink;
+  color: firebrick;
+  font-weight: bold;
+  padding: 8px;
+  margin-bottom: 8px;
 }
-.authorization__body img {
-   width: 150px;
-   margin: 0 0 30px;
+.authorization .offscreen {
+  position: absolute;
+  left: -9999px;
 }
-.authorization__title {
-   margin-bottom: 10px;
-   /* text-align: center; */
-   font-size: 26px;
-   color: #4f4f4f;
+.authorization .authorization__body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
-.authorization__title span {
-   color: #53c95a;
+.authorization .authorization__body img {
+  width: 150px;
+  margin: 0 0 30px;
 }
-.authorization__subtitle {
-   /* text-align: center; */
-   margin-bottom: 30px;
-   font-size: 16px;
-   color: rgb(159, 159, 159);
+.authorization .authorization__body .authorization__title {
+  margin-bottom: 10px;
+  font-size: 26px;
+  color: #4f4f4f;
 }
-.offscreen {
-   position: absolute;
-   left: -9999px;
+.authorization .authorization__body .authorization__title span {
+  color: #53c95a;
 }
-.errmsg {
-   background-color: lightpink;
-   color: firebrick;
-   font-weight: bold;
-   padding: 0.5rem;
-   margin-bottom: 0.5rem;
+.authorization .authorization__body .authorization__subtitle {
+  margin-bottom: 30px;
+  font-size: 16px;
+  color: rgb(159, 159, 159);
 }
-.authorization__form {
-   width: 70%;
-   display: flex;
-   flex-direction: column;
+.authorization .authorization__body .authorization__form {
+  width: 70%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
-.block__input {
-   display: flex;
-   align-items: center;
+.authorization .authorization__body .authorization__form .authorization__input {
+  width: 95%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 6px;
+  -webkit-box-shadow: 5px 5px 5px rgb(204, 204, 204);
+          box-shadow: 5px 5px 5px rgb(204, 204, 204);
 }
-.authorization__input {
-   width: 95%;
-   padding: 10px;
-   margin: 10px 0;
-
-   border: 1px solid rgb(204, 204, 204);
-   border-radius: 6px;
-   box-shadow: 5px 5px 5px rgb(204, 204, 204);
+.authorization .authorization__body .authorization__form .authorization__input::-webkit-input-placeholder {
+  font-weight: 500;
+  font-size: 17px;
+  color: rgb(159, 159, 159);
 }
-.authorization__input::placeholder {
-   font-weight: 500;
-   font-size: 17px;
-   color: rgb(159, 159, 159);
+.authorization .authorization__body .authorization__form .authorization__input::-moz-placeholder {
+  font-weight: 500;
+  font-size: 17px;
+  color: rgb(159, 159, 159);
 }
-.authorization__input:focus {
-   border: 1px solid #53c95a;
-   outline: none;
+.authorization .authorization__body .authorization__form .authorization__input:-ms-input-placeholder {
+  font-weight: 500;
+  font-size: 17px;
+  color: rgb(159, 159, 159);
 }
-.authorization__to-registration {
-   margin-bottom: 10px;
-   font-size: 16px;
-   color: #747474;
+.authorization .authorization__body .authorization__form .authorization__input::-ms-input-placeholder {
+  font-weight: 500;
+  font-size: 17px;
+  color: rgb(159, 159, 159);
 }
-.authorization__button {
-   width: 70%;
-   padding: 12px 24px;
-   margin: 30px auto 50px;
-
-   border-radius: 30px;
-   border: none;
-
-   color: #fff;
-   font-size: 18px;
-   font-weight: 600;
+.authorization .authorization__body .authorization__form .authorization__input::placeholder {
+  font-weight: 500;
+  font-size: 17px;
+  color: rgb(159, 159, 159);
 }
-.active {
-   background-color: #53c95a;
+.authorization .authorization__body .authorization__form .authorization__input:focus {
+  border: 1px solid #53c95a;
+  outline: none;
 }
-.active:hover {
-   background-color: #5ce965;
-   transition: 0.2s;
+.authorization .authorization__body .authorization__form .authorization__button {
+  width: 70%;
+  padding: 12px 24px;
+  margin: 30px auto 50px;
+  border-radius: 30px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
 }
-.disabled {
-   background-color: #91cc95;
+.authorization .authorization__body .authorization__form .active {
+  background-color: #53c95a;
 }
-.link {
-   font-weight: 600;
-   font-size: 18px;
-   color: #53c95a;
+.authorization .authorization__body .authorization__form .active:hover {
+  background-color: #5ce965;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
-.success-message {
-   width: 390px;
-   min-height: 270px;
-   margin: 200px auto;
-   padding: 10px;
-   border-radius: 12px;
-   box-shadow: 2px 2px 10px rgb(187, 187, 187);
-   display: flex;
-   align-items: center;
-   flex-direction: column;
-   justify-content: center;
+.authorization .authorization__body .authorization__form .disabled {
+  background-color: #91cc95;
 }
-
-
-
-
-
-
-
-
-
-
-
-
+.authorization .authorization__body .authorization__to-registration {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #747474;
+}
+.authorization .authorization__body .link {
+  font-weight: 600;
+  font-size: 18px;
+  color: #53c95a;
+}
+@media (max-width: 1280px) {
+  .authorization {
+    min-width: 470px;
+    min-height: 570px;
+    margin: 120px auto;
+  }
+  .authorization .authorization__body img {
+    width: 130px;
+    margin: 10px 0 30px;
+  }
+  .authorization .authorization__body .authorization__title {
+    font-size: 22px;
+  }
+  .authorization .authorization__body .authorization__subtitle {
+    font-size: 15px;
+  }
+  .authorization .authorization__body .authorization__form .authorization__input {
+    font-size: 15px;
+  }
+  .authorization .authorization__body .authorization__form .authorization__input::-webkit-input-placeholder {
+    font-size: 15px;
+  }
+  .authorization .authorization__body .authorization__form .authorization__input::-moz-placeholder {
+    font-size: 15px;
+  }
+  .authorization .authorization__body .authorization__form .authorization__input:-ms-input-placeholder {
+    font-size: 15px;
+  }
+  .authorization .authorization__body .authorization__form .authorization__input::-ms-input-placeholder {
+    font-size: 15px;
+  }
+  .authorization .authorization__body .authorization__form .authorization__input::placeholder {
+    font-size: 15px;
+  }
+}
+@media (max-width: 780px) {
+  .authorization {
+    min-width: 430px;
+    min-height: 520px;
+    margin: 120px auto;
+  }
+  .authorization .authorization__body img {
+    width: 110px;
+    margin: 10px 0 30px;
+  }
+  .authorization .authorization__body .authorization__title {
+    font-size: 20px;
+  }
+  .authorization .authorization__body .authorization__subtitle {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  .authorization .authorization__body .authorization__form .authorization__input {
+    font-size: 14px;
+    margin: 7px 0;
+  }
+  .authorization .authorization__body .authorization__form .authorization__input::-webkit-input-placeholder {
+    font-size: 14px;
+  }
+  .authorization .authorization__body .authorization__form .authorization__input::-moz-placeholder {
+    font-size: 14px;
+  }
+  .authorization .authorization__body .authorization__form .authorization__input:-ms-input-placeholder {
+    font-size: 14px;
+  }
+  .authorization .authorization__body .authorization__form .authorization__input::-ms-input-placeholder {
+    font-size: 14px;
+  }
+  .authorization .authorization__body .authorization__form .authorization__input::placeholder {
+    font-size: 14px;
+  }
+  .authorization .authorization__body .authorization__form .authorization__button {
+    padding: 10px 22px;
+    border-radius: 22px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .authorization .authorization__body .authorization__to-registration {
+    font-size: 14px;
+  }
+  .authorization .authorization__body .link {
+    font-size: 16px;
+  }
+}
+@media (max-width: 430px) {
+  .authorization {
+    width: 100%;
+    min-width: 280px;
+    min-height: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin: 0px auto;
+    padding: 20px;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+  .authorization .authorization__body .authorization__title {
+    font-size: 18px;
+    text-align: center;
+  }
+  .authorization .authorization__body .authorization__subtitle {
+    font-size: 13px;
+  }
+  .authorization .authorization__body .authorization__form .authorization__input {
+    font-size: 13px;
+  }
+  .authorization .authorization__body .authorization__form .authorization__input::-webkit-input-placeholder {
+    font-size: 13px;
+  }
+  .authorization .authorization__body .authorization__form .authorization__input::-moz-placeholder {
+    font-size: 13px;
+  }
+  .authorization .authorization__body .authorization__form .authorization__input:-ms-input-placeholder {
+    font-size: 13px;
+  }
+  .authorization .authorization__body .authorization__form .authorization__input::-ms-input-placeholder {
+    font-size: 13px;
+  }
+  .authorization .authorization__body .authorization__form .authorization__input::placeholder {
+    font-size: 13px;
+  }
+  .authorization .authorization__body .authorization__form .authorization__button {
+    width: 90%;
+    padding: 10px 10px;
+    border-radius: 22px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .authorization .authorization__body .authorization__to-registration {
+    width: 90%;
+    font-size: 12px;
+    text-align: center;
+  }
+  .authorization .authorization__body .link {
+    font-size: 14px;
+  }
+}

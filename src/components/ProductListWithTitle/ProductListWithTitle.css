@@ -19,8 +19,17 @@
       flex-wrap: wrap;
   margin: 0 auto;
 }
+@media (max-width: 1240px) {
+  .products-list {
+    max-height: 356px;
+    padding: 10px;
+  }
+}
 @media (max-width: 800px) {
   .products-list {
     max-height: 100%;
+  }
+  .products-list .products-list__title {
+    font-size: 19px;
   }
 }

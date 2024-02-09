@@ -99,7 +99,6 @@
 .header .header__body .header__content .header__product-search .header__button-search {
   min-width: 75px;
   background-color: #53c95a;
-  margin: 0 0 0 0;
   color: #ffffff;
   border: none;
   border-radius: 12px;
@@ -112,7 +111,7 @@
 }
 .header .header__body .header__content .header__buttons .header__address {
   padding: 6px 12px;
-  margin-right: 20px;
+  margin: 0 20px;
   border: 1px solid rgb(204, 204, 204);
   background-color: rgb(247, 247, 247);
   border-radius: 12px;
@@ -215,9 +214,26 @@
     height: 15px;
   }
 }
+@media (max-width: 890px) {
+  .header {
+    height: 50px;
+    background-size: 100% 43px;
+  }
+  .header .header__greeting {
+    display: none;
+  }
+  .header .header__body .header__content .header__product-search .header__input-search .input-search {
+    width: 270px;
+    padding: 8px 10px 8px 32px;
+    font-size: 14px;
+  }
+  .header .header__body .header__content .header__buttons .header__address {
+    display: none;
+  }
+}
 @media (max-width: 780px) {
   .header {
-    height: 95px;
+    height: 54px;
     background-size: 100% 43px;
   }
   .header .header__greeting {
@@ -283,6 +299,9 @@
   }
 }
 @media (max-width: 530px) {
+  .header {
+    height: 70px;
+  }
   .header .header__greeting {
     display: none;
   }
