@@ -9,6 +9,7 @@ import { Category } from "../../../types/category";
 import { FilterResponse } from "../../../services/models/filterResponse";
 import { Product } from "../../../types/product";
 import ModalFiltersWindow from "../../ModalFiltersWindow/ModalFiltersWindow";
+import Pagination from "../../Pagination/Pagination";
 
 const Products: React.FC = () => {
    const { categoryId } = useParams();
@@ -29,6 +30,8 @@ const Products: React.FC = () => {
 
    const [priceMin, setPriceMin] = useState<number>();
    const [priceMax, setPriceMax] = useState<number>();
+   const [currentPage, setCurrentPage] = useState<number>(0);
+   const [totalPages, setTotalPages] = useState<number>(0)
    const productService = new ProductService();
 
    const _categoryId = categoryId != undefined ? Number(categoryId) : undefined;
@@ -39,7 +42,7 @@ const Products: React.FC = () => {
          await updateProducts();
          await updateFilter();
       })();
-   }, [categoryId, orderBy]);
+   }, [categoryId, orderBy, currentPage, totalPages]);
 
    const updateProducts = async () => {
       let productFilter = new ProductFilter();
@@ -63,8 +66,14 @@ const Products: React.FC = () => {
       if (orderBy != undefined) {
          productFilter.orderBy = orderBy;
       }
-
+      if(currentPage != 0){
+         productFilter.pageNumber = currentPage
+      }
+      productFilter.limit = 12
       const productResponse = await productService.getProducts(productFilter);
+      setTotalPages(productResponse.currentPage)
+      setCurrentPage(productResponse.currentPage)
+      
 
       setProducts(productResponse.products);
    };
@@ -163,6 +172,7 @@ const Products: React.FC = () => {
                {products.map((product) => {
                   return <ProductCard key={product.id} product={product} />;
                })}
+               <Pagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
             </div>
          </div>
       </section>
