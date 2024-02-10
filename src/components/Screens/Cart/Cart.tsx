@@ -5,6 +5,7 @@ import CartItem from "./CartItem/CartItem";
 import { CartService } from "../../../services/cartService";
 import { ShoppingCartItem } from "../../../types/shoppingCartItem";
 import { Link } from "react-router-dom";
+import { FRONTEND_URL } from "../../App/App";
 
 const Cart: React.FC = () => {
    const [shoppingCart, setShoppingCart] = useState<ShoppingCartItem[]>([]);
@@ -36,6 +37,10 @@ const Cart: React.FC = () => {
       await cartService.setShoppingCartItems([]);
       setShoppingCart([]);
    };
+
+   const orderRegistration = () => {
+      window.location.href = FRONTEND_URL + `/order/decoration`;
+   }
 
    return (
       <section>
@@ -90,7 +95,7 @@ const Cart: React.FC = () => {
                      <p className="cart__subtitle">Итоговая сумма</p>
                      <p className="cart__amount-price">{totalAmount} ₸</p>
                   </div>
-                  <button className="cart__pricer-button">Заказать</button>
+                  <button className="cart__pricer-button" onClick={orderRegistration}>Заказать</button>
                </div>
             </div>
          ) : (

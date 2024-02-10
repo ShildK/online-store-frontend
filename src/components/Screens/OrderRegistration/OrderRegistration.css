@@ -1,0 +1,286 @@
+.order-registration {
+  max-width: 100%;
+  margin: 100px auto;
+}
+.order-registration img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 150px;
+  margin: 0 auto 30px;
+}
+.order-registration .order-registration__link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: 600;
+  color: #3eb446;
+}
+.order-registration .order-registration__title {
+  text-align: center;
+  color: #3eb446;
+  margin-bottom: 40px;
+  font-size: 30px;
+}
+.order-registration .order-registration__form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.order-registration .order-registration__form .order-registration__form-input {
+  width: 40%;
+  padding: 7px 10px;
+  margin: 10px 0;
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 6px;
+  -webkit-box-shadow: 5px 5px 5px rgb(204, 204, 204);
+          box-shadow: 5px 5px 5px rgb(204, 204, 204);
+  font-size: 17px;
+  color: #4f4f4f;
+}
+.order-registration .order-registration__form .form__date {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.order-registration .order-registration__form .form__date p {
+  margin: 30px 0 10px;
+}
+.order-registration .order-registration__form .form__date .form__date-day {
+  width: 40%;
+  padding: 10px 15px;
+  border-radius: 9px;
+  outline: none;
+  color: #333333;
+  font-size: 16px;
+  border: 1px solid rgb(204, 204, 204);
+  -webkit-box-shadow: 5px 5px 5px rgb(204, 204, 204);
+          box-shadow: 5px 5px 5px rgb(204, 204, 204);
+  margin: 10px;
+}
+.order-registration .order-registration__form .form__date .form__date-time {
+  width: 40%;
+  padding: 10px 15px;
+  border-radius: 9px;
+  outline: none;
+  color: #333333;
+  font-size: 16px;
+  border: 1px solid rgb(204, 204, 204);
+  -webkit-box-shadow: 5px 5px 5px rgb(204, 204, 204);
+          box-shadow: 5px 5px 5px rgb(204, 204, 204);
+  margin: 10px;
+}
+.order-registration .order-registration__form .form__order-information {
+  width: 40%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 40px;
+}
+.order-registration .order-registration__form .form__order-information .form__order-information__text {
+  width: 70%;
+  font-weight: 500;
+  font-size: 18px;
+}
+.order-registration .order-registration__form .form__order-information .form__order-information__price {
+  text-align: end;
+  width: 30%;
+  font-weight: 600;
+  font-size: 18px;
+  color: #3eb446;
+}
+.order-registration .order-registration__form .form__button {
+  width: 30%;
+  padding: 12px 24px;
+  margin: 70px auto 30px;
+  border-radius: 30px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+}
+.order-registration .order-registration__form .active {
+  background-color: #53c95a;
+}
+.order-registration .order-registration__form .active:hover {
+  background-color: #5ce965;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+.order-registration .order-registration__form .disabled {
+  background-color: #91cc95;
+}
+@media (max-width: 680px) {
+  .order-registration {
+    margin: 70px auto;
+  }
+  .order-registration .order-registration__title {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  .order-registration .order-registration__form .order-registration__form-input {
+    width: 60%;
+    padding: 7px 10px;
+    margin: 7px 0;
+    font-size: 14px;
+  }
+  .order-registration .order-registration__form .form__date p {
+    margin: 30px 0 5px;
+    font-size: 15px;
+  }
+  .order-registration .order-registration__form .form__date .form__date-day {
+    width: 60%;
+    padding: 7px 15px;
+    font-size: 14px;
+    margin: 7px;
+  }
+  .order-registration .order-registration__form .form__date .form__date-time {
+    width: 60%;
+    padding: 7px 15px;
+    font-size: 14px;
+    margin: 7px;
+  }
+  .order-registration .order-registration__form .form__order-information {
+    width: 60%;
+    margin-top: 40px;
+  }
+  .order-registration .order-registration__form .form__order-information .form__order-information__text {
+    width: 70%;
+    font-size: 16px;
+  }
+  .order-registration .order-registration__form .form__order-information .form__order-information__price {
+    width: 30%;
+    font-size: 16px;
+  }
+  .order-registration .order-registration__form .form__button {
+    width: 40%;
+    padding: 7px 18px;
+    margin: 70px auto 30px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+@media (max-width: 480px) {
+  .order-registration {
+    margin: 50px auto;
+  }
+  .order-registration .order-registration__title {
+    margin-bottom: 15px;
+    font-size: 22px;
+  }
+  .order-registration .order-registration__form .order-registration__form-input {
+    width: 80%;
+    padding: 7px 10px;
+    margin: 5px 0;
+    font-size: 14px;
+  }
+  .order-registration .order-registration__form .form__date p {
+    margin: 30px 0 5px;
+    font-size: 15px;
+  }
+  .order-registration .order-registration__form .form__date .form__date-day {
+    width: 80%;
+    padding: 7px 15px;
+    font-size: 14px;
+    margin: 5px;
+  }
+  .order-registration .order-registration__form .form__date .form__date-time {
+    width: 80%;
+    padding: 7px 15px;
+    font-size: 14px;
+    margin: 5px;
+  }
+  .order-registration .order-registration__form .form__order-information {
+    width: 80%;
+    margin-top: 40px;
+  }
+  .order-registration .order-registration__form .form__order-information .form__order-information__text {
+    width: 70%;
+    font-size: 16px;
+  }
+  .order-registration .order-registration__form .form__order-information .form__order-information__price {
+    width: 30%;
+    font-size: 16px;
+  }
+  .order-registration .order-registration__form .form__button {
+    width: 50%;
+    padding: 10px 20px;
+    margin: 50px auto 30px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+
+.order-is-made {
+  max-width: 50%;
+  margin: 100px auto;
+  text-align: center;
+}
+.order-is-made img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 150px;
+  margin: 0 auto 30px;
+}
+.order-is-made .title {
+  color: #3eb446;
+  margin-bottom: 40px;
+  font-size: 30px;
+}
+.order-is-made .text {
+  margin-bottom: 7px;
+}
+.order-is-made .subtitle {
+  margin-top: 40px;
+  color: #3eb446;
+}
+.order-is-made .order-is-made__link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: 600;
+  margin-top: 20px;
+  color: #3eb446;
+}
+@media (max-width: 540px) {
+  .order-is-made {
+    max-width: 90%;
+  }
+  .order-is-made .title {
+    color: #3eb446;
+    margin-bottom: 40px;
+    font-size: 26px;
+  }
+  .order-is-made .text {
+    font-size: 14px;
+  }
+  .order-is-made .subtitle {
+    margin-top: 40px;
+    color: #3eb446;
+  }
+}

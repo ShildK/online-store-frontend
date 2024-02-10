@@ -16,6 +16,7 @@ import SingleProduct from "../Screens/SingleProduct/SingleProduct";
 import Registration from "../Screens/Registration/Registration";
 import Authorization from "../Screens/Authorization/Authorization";
 import Cart from "../Screens/Cart/Cart";
+import OrderRegistration from "../Screens/OrderRegistration/OrderRegistration";
 
 const AppRoutes = () => {
    const router = createBrowserRouter(
@@ -37,6 +38,10 @@ const AppRoutes = () => {
                   <Route index element={<Authorization />} />
                   <Route path="registration" element={<Registration />} />
                   <Route path="authorization" element={<Authorization />} />
+               </Route>
+               <Route path="/order" element={<SimpleLayout />}>
+                  <Route index element={<OrderRegistration />} />
+                  <Route path="decoration" element={<OrderRegistration />} />
                </Route>
             </>
       )

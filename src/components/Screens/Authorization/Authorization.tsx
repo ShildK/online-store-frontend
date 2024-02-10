@@ -35,7 +35,7 @@ const Authorization: React.FC = () => {
          else{
             setErrorMessage("Ошибка входа, попробуйте еще раз");
          }
-         if (success) {
+         if (user) {
             window.location.href = FRONTEND_URL + `/home`;
          }
       } catch (err) {
